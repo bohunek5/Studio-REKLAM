@@ -95,7 +95,7 @@ const App: React.FC = () => {
             }
         },
         colors: {
-            primary: "#ffffff",
+            primary: "#000000",
             secondary: "#e2e8f0",
             accent: "#ffffff",
             background: "#1c1917",
@@ -520,7 +520,7 @@ const App: React.FC = () => {
             } else if (appState.style === 'neon-urban') {
                 templateBackgroundHTML = `<div style="position: absolute; inset: 0; z-index: 0; opacity: 0.2; background-image: linear-gradient(${appState.colors.secondary} 1px, transparent 1px), linear-gradient(90deg, ${appState.colors.secondary} 1px, transparent 1px); background-size: 50px 50px; pointer-events: none;"></div>`;
             } else if (appState.style === 'elegant-serif') {
-                templateBackgroundHTML = appState.images.backgroundImage ? `<div style="position: absolute; inset: 0; z-index: 1; background: linear-gradient(to top, ${appState.colors.primary} 10%, transparent 60%); pointer-events: none;"></div>` : '';
+                templateBackgroundHTML = appState.images.backgroundImage ? `<div style="position: absolute; inset: 0; z-index: 1; background: linear-gradient(to top, #000000 0%, transparent 70%); pointer-events: none;"></div>` : '';
             }
 
             // 2. Base Container Construction
@@ -538,7 +538,7 @@ const App: React.FC = () => {
                 ${templateBackgroundHTML}
                 
                 ${appState.images.backgroundImage ? `
-                <div style="position: absolute; inset: 0; z-index: 0; opacity: ${appState.style === 'bold-geometric' ? '0.4' : '0.6'}; mix-blend-mode: ${appState.style === 'bold-geometric' ? 'overlay' : 'normal'};">
+                <div style="position: absolute; inset: 0; z-index: 0; opacity: ${appState.style === 'bold-geometric' ? '0.4' : appState.style === 'elegant-serif' ? '1' : '0.6'}; mix-blend-mode: ${appState.style === 'bold-geometric' ? 'overlay' : 'normal'};">
                     <img src="${appState.images.backgroundImage}" style="width:100%; height:100%; object-fit:cover; ${appState.style === 'bold-geometric' ? 'filter: grayscale(100%) contrast(125%);' : ''}" />
                 </div>` : ''}
                 
