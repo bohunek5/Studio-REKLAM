@@ -37,7 +37,7 @@ const App: React.FC = () => {
     // --- INITIAL STATE: APPLE STYLE MINIMALISM ---
     const [appState, setAppState] = useState<AppState>({
         format: 'square',
-        style: 'elegant-serif', // Catalog style
+        style: 'elegant-serif', // Premium catalog style
         isGenerating: false,
         favorites: [],
         grid: { show: false, size: 20, color: 'black' },
@@ -47,39 +47,36 @@ const App: React.FC = () => {
         selectedElements: [],
         selectionBox: null,
         content: {
-            productName: "Stranda Residence", // Brand
+            productName: "PRESCOT LED", // Brand
             showProductName: true,
             productNameColor: "#ffffff",
-            headline: "SZTUKA\nWYPOCZYNKU",
+            headline: "TAŚMA LED\nCRI 97",
             showHeadline: true,
             headlineColor: "#ffffff",
-            subheadline: "Giżycko • Jezioro Kisajno • Apartament A103",
+            subheadline: "Perfekcyjne Odwzorowanie Barw • Profesjonalna Jakość",
             showSubheadline: true,
-            subheadlineColor: "#cbd5e1", // Subtle gray-white
-            ctaText: "ZOBACZ WIĘCEJ",
+            subheadlineColor: "#e2e8f0", // Subtle gray-white
+            ctaText: "POZNAJ OFERTĘ",
             showCTA: true,
-            ctaBgColor: "transparent",
+            ctaBgColor: "#ff6b35",
             ctaTextColor: "#ffffff",
-            ctaStyle: 'glass', // Premium glass effect
+            ctaStyle: 'solid', // Strong CTA
             ctaAnimation: 'none',
-            ctaAnimationEnabled: false, // Static elegance
-            contactInfo: "mazury.holiday",
+            ctaAnimationEnabled: false,
+            contactInfo: "prescot.pl • Polski Producent Oświetlenia LED",
             showContact: true,
             contactInfoColor: "#94a3b8",
-            promoBadge: "Premium",
-            showPromoBadge: false, // Minimalist
-            promoBadgeBgColor: "#000000",
+            promoBadge: "CRI 97",
+            showPromoBadge: true,
+            promoBadgeBgColor: "#ff6b35",
             promoBadgeTextColor: "#ffffff"
         },
         images: {
             productImage: null,
-            logoImage: '/Studio-REKLAM/mazury_logo.png',
-            backgroundImage: '/Studio-REKLAM/a103_catalog.webp',
+            logoImage: '/Studio-REKLAM/prescot_logo.png',
+            backgroundImage: '/Studio-REKLAM/led_cri97_bg.png',
             layers: [],
-            shapes: [
-                // Subtle dark gradient from bottom for readability
-                { id: 'overlay_gradient', type: 'rectangle', color: '#000000', opacity: 0.3, transforms: { square: { scale: 2, x: 0, y: 0, rotation: 0 }, portrait: { scale: 2, x: 0, y: 0, rotation: 0 }, landscape: { scale: 2, x: 0, y: 0, rotation: 0 } }, zIndex: 5, locked: true, shadow: { enabled: false, color: '#000000', blur: 0, x: 0, y: 0 } }
-            ],
+            shapes: [],
             customTexts: [],
             productLocked: false,
             logoLocked: false,
@@ -89,54 +86,54 @@ const App: React.FC = () => {
                 landscape: { scale: 1, x: 0, y: 0, rotation: 0 },
             },
             logoTransforms: {
-                square: { scale: 0.5, x: 0, y: -450, rotation: 0 }, // Top Center
-                portrait: { scale: 0.6, x: 0, y: -850, rotation: 0 },
-                landscape: { scale: 0.4, x: -850, y: -450, rotation: 0 }, // Top Left
+                square: { scale: 0.4, x: -400, y: -450, rotation: 0 }, // Top Left
+                portrait: { scale: 0.5, x: -450, y: -850, rotation: 0 },
+                landscape: { scale: 0.35, x: -800, y: -450, rotation: 0 },
             }
         },
         colors: {
             primary: "#000000",
-            secondary: "#e2e8f0",
-            accent: "#ffffff",
-            background: "#1c1917",
+            secondary: "#1a1a1a",
+            accent: "#ff6b35", // PRESCOT orange
+            background: "#0a0a0a",
             text: "#ffffff"
         },
         typography: {
-            headlineFont: 'Playfair Display', // Elegant Serif
-            subheadlineFont: 'Montserrat', // Clean Sans
+            headlineFont: 'Bebas Neue', // Bold, technical
+            subheadlineFont: 'Inter', // Clean, modern
             badgeFont: 'Inter',
             contactFont: 'Inter',
         },
         textLayout: {
             productName: {
-                square: { scale: 0.6, x: 0, y: -380, rotation: 0, zIndex: 48, textAlign: 'center', lineHeight: 2, locked: false, shadow: { enabled: true, color: '#000000', blur: 5, x: 1, y: 1 } },
-                portrait: { scale: 0.7, x: 0, y: -750, rotation: 0, zIndex: 48, textAlign: 'center', lineHeight: 2, locked: false, shadow: { enabled: true, color: '#000000', blur: 5, x: 1, y: 1 } },
-                landscape: { scale: 0.6, x: -850, y: -350, rotation: 0, zIndex: 48, textAlign: 'left', lineHeight: 2, locked: false, shadow: { enabled: true, color: '#000000', blur: 5, x: 1, y: 1 } },
+                square: { scale: 0.5, x: -350, y: -380, rotation: 0, zIndex: 48, textAlign: 'left', lineHeight: 1.2, locked: false, shadow: { enabled: true, color: '#000000', blur: 8, x: 2, y: 2 } },
+                portrait: { scale: 0.6, x: -400, y: -750, rotation: 0, zIndex: 48, textAlign: 'left', lineHeight: 1.2, locked: false, shadow: { enabled: true, color: '#000000', blur: 8, x: 2, y: 2 } },
+                landscape: { scale: 0.5, x: -750, y: -380, rotation: 0, zIndex: 48, textAlign: 'left', lineHeight: 1.2, locked: false, shadow: { enabled: true, color: '#000000', blur: 8, x: 2, y: 2 } },
             },
             headline: {
-                square: { scale: 1.4, x: 0, y: -50, rotation: 0, zIndex: 50, textAlign: 'center', lineHeight: 1.1, locked: false, shadow: { enabled: true, color: '#000000', blur: 10, x: 2, y: 2 } },
-                portrait: { scale: 1.6, x: 0, y: -150, rotation: 0, zIndex: 50, textAlign: 'center', lineHeight: 1.1, locked: false, shadow: { enabled: true, color: '#000000', blur: 10, x: 2, y: 2 } },
-                landscape: { scale: 1.4, x: 0, y: 0, rotation: 0, zIndex: 50, textAlign: 'center', lineHeight: 1.1, locked: false, shadow: { enabled: true, color: '#000000', blur: 10, x: 2, y: 2 } },
+                square: { scale: 1.8, x: 0, y: 0, rotation: 0, zIndex: 50, textAlign: 'center', lineHeight: 0.9, locked: false, shadow: { enabled: true, color: '#000000', blur: 15, x: 3, y: 3 } },
+                portrait: { scale: 2, x: 0, y: -100, rotation: 0, zIndex: 50, textAlign: 'center', lineHeight: 0.9, locked: false, shadow: { enabled: true, color: '#000000', blur: 15, x: 3, y: 3 } },
+                landscape: { scale: 1.6, x: 0, y: 0, rotation: 0, zIndex: 50, textAlign: 'center', lineHeight: 0.9, locked: false, shadow: { enabled: true, color: '#000000', blur: 15, x: 3, y: 3 } },
             },
             subheadline: {
-                square: { scale: 0.8, x: 0, y: 150, rotation: 0, zIndex: 49, textAlign: 'center', lineHeight: 1.6, locked: false, shadow: { enabled: true, color: '#000000', blur: 5, x: 1, y: 1 } },
-                portrait: { scale: 0.9, x: 0, y: 100, rotation: 0, zIndex: 49, textAlign: 'center', lineHeight: 1.6, locked: false, shadow: { enabled: true, color: '#000000', blur: 5, x: 1, y: 1 } },
-                landscape: { scale: 0.8, x: 0, y: 150, rotation: 0, zIndex: 49, textAlign: 'center', lineHeight: 1.6, locked: false, shadow: { enabled: true, color: '#000000', blur: 5, x: 1, y: 1 } },
+                square: { scale: 0.7, x: 0, y: 200, rotation: 0, zIndex: 49, textAlign: 'center', lineHeight: 1.4, locked: false, shadow: { enabled: true, color: '#000000', blur: 8, x: 2, y: 2 } },
+                portrait: { scale: 0.8, x: 0, y: 150, rotation: 0, zIndex: 49, textAlign: 'center', lineHeight: 1.4, locked: false, shadow: { enabled: true, color: '#000000', blur: 8, x: 2, y: 2 } },
+                landscape: { scale: 0.7, x: 0, y: 180, rotation: 0, zIndex: 49, textAlign: 'center', lineHeight: 1.4, locked: false, shadow: { enabled: true, color: '#000000', blur: 8, x: 2, y: 2 } },
             },
             cta: {
-                square: { scale: 1, x: 0, y: 350, rotation: 0, zIndex: 47, textAlign: 'center', lineHeight: 1, locked: false, shadow: { enabled: true, color: '#000000', blur: 10, x: 2, y: 2 } },
-                portrait: { scale: 1.1, x: 0, y: 500, rotation: 0, zIndex: 47, textAlign: 'center', lineHeight: 1, locked: false, shadow: { enabled: true, color: '#000000', blur: 10, x: 2, y: 2 } },
-                landscape: { scale: 1.1, x: 0, y: 350, rotation: 0, zIndex: 47, textAlign: 'center', lineHeight: 1, locked: false, shadow: { enabled: true, color: '#000000', blur: 10, x: 2, y: 2 } },
+                square: { scale: 1, x: 0, y: 380, rotation: 0, zIndex: 47, textAlign: 'center', lineHeight: 1, locked: false, shadow: { enabled: true, color: '#000000', blur: 12, x: 2, y: 2 } },
+                portrait: { scale: 1.1, x: 0, y: 550, rotation: 0, zIndex: 47, textAlign: 'center', lineHeight: 1, locked: false, shadow: { enabled: true, color: '#000000', blur: 12, x: 2, y: 2 } },
+                landscape: { scale: 1, x: 0, y: 380, rotation: 0, zIndex: 47, textAlign: 'center', lineHeight: 1, locked: false, shadow: { enabled: true, color: '#000000', blur: 12, x: 2, y: 2 } },
             },
             contact: {
-                square: { scale: 0.7, x: 0, y: 480, rotation: 0, zIndex: 46, textAlign: 'center', lineHeight: 1.1, locked: false, shadow: { enabled: true, color: '#000000', blur: 5, x: 1, y: 1 } },
-                portrait: { scale: 0.8, x: 0, y: 850, rotation: 0, zIndex: 46, textAlign: 'center', lineHeight: 1.1, locked: false, shadow: { enabled: true, color: '#000000', blur: 5, x: 1, y: 1 } },
-                landscape: { scale: 0.7, x: 0, y: 480, rotation: 0, zIndex: 46, textAlign: 'center', lineHeight: 1.1, locked: false, shadow: { enabled: true, color: '#000000', blur: 5, x: 1, y: 1 } },
+                square: { scale: 0.6, x: 0, y: 490, rotation: 0, zIndex: 46, textAlign: 'center', lineHeight: 1.1, locked: false, shadow: { enabled: true, color: '#000000', blur: 6, x: 1, y: 1 } },
+                portrait: { scale: 0.7, x: 0, y: 870, rotation: 0, zIndex: 46, textAlign: 'center', lineHeight: 1.1, locked: false, shadow: { enabled: true, color: '#000000', blur: 6, x: 1, y: 1 } },
+                landscape: { scale: 0.6, x: 0, y: 490, rotation: 0, zIndex: 46, textAlign: 'center', lineHeight: 1.1, locked: false, shadow: { enabled: true, color: '#000000', blur: 6, x: 1, y: 1 } },
             },
             badge: {
-                square: { scale: 1.2, x: 350, y: -350, rotation: 0, zIndex: 46, textAlign: 'center', lineHeight: 1.1, locked: false, shadow: { enabled: true, color: '#000000', blur: 5, x: 1, y: 1 } },
-                portrait: { scale: 1.2, x: 400, y: -800, rotation: 0, zIndex: 46, textAlign: 'center', lineHeight: 1.1, locked: false, shadow: { enabled: true, color: '#000000', blur: 5, x: 1, y: 1 } },
-                landscape: { scale: 1.2, x: 800, y: -400, rotation: 0, zIndex: 46, textAlign: 'center', lineHeight: 1.1, locked: false, shadow: { enabled: true, color: '#000000', blur: 5, x: 1, y: 1 } },
+                square: { scale: 1.4, x: 380, y: -380, rotation: 0, zIndex: 51, textAlign: 'center', lineHeight: 1, locked: false, shadow: { enabled: true, color: '#000000', blur: 8, x: 2, y: 2 } },
+                portrait: { scale: 1.5, x: 430, y: -800, rotation: 0, zIndex: 51, textAlign: 'center', lineHeight: 1, locked: false, shadow: { enabled: true, color: '#000000', blur: 8, x: 2, y: 2 } },
+                landscape: { scale: 1.3, x: 820, y: -420, rotation: 0, zIndex: 51, textAlign: 'center', lineHeight: 1, locked: false, shadow: { enabled: true, color: '#000000', blur: 8, x: 2, y: 2 } },
             }
         }
     });
